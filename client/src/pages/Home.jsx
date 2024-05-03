@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import img3 from "../assets/img3.png";
 import { Navbar } from "../components/Navbar";
 import Register from "../components/Register";
 import Login from "../components/Login";
 
-// eslint-disable-next-line react/prop-types
 const Home = ({ showLogin }) => {
   const [showLoginForm, setShowLoginForm] = useState(showLogin || false);
 
@@ -43,3 +43,7 @@ const Home = ({ showLogin }) => {
 };
 
 export default Home;
+
+Home.propTypes = {
+  showLogin: PropTypes.bool,
+};
