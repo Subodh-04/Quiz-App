@@ -19,7 +19,7 @@ const Topic = () => {
   const fetchUsername = async (userId) => {
     try {
       const response = await fetch(
-        `https://quizkaroo.onrender.com/api/auth/user/${userId}`
+        `http://localhost:5000/api/auth/user/${userId}`
       );
       if (response.ok) {
         const userData = await response.json();

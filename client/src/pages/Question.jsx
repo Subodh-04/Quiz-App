@@ -32,7 +32,7 @@ const Question = () => {
   const fetchQuestions = async (category) => {
     try {
       const response = await fetch(
-        `https://quizkaroo.onrender.com/api/auth/questions/${category}`
+        `http://localhost:5000/api/auth/questions/${category}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
