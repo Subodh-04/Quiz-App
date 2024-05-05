@@ -3,14 +3,14 @@ const axios=require("axios");
 const router = express.Router();
 const authController=require("../controllers/auth-controller");
 const resController=require("../controllers/res-controller");
-const signupSchema=require("../validators/auth-validator");
+const {signupSchema,loginSchema}=require("../validators/auth-validator");
 const validate=require("../middlewares/validate-middleware");
 const User=require("../models/user-model");
 
 
 router.post("/",validate(signupSchema),authController.home);
 
-router.post("/login", authController.login);
+router.post("/login", validate(loginSchema),authController.login);
 router.get('/user/:userId', authController.userfind);
   
 router.get("/questions/:category", async (req, res) => {
