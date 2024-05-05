@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -28,16 +30,15 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
-      console.log("login:", response);
+      const res_data = await response.json();
+      console.log("res from server:", res_data);
       if (response.ok) {
-        alert("login successfull");
+        toast.success("login successfull");
         setUser({ email: "", password: "" });
-        const data = await response.json();
-        localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("user", JSON.stringify(res_data));
         navigate("/topic");
       } else {
-        alert("Invalid Credentials");
-        console.log("Invalid Credentials");
+        toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
       }
     } catch (error) {
       console.log(error);

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
 
@@ -30,16 +32,19 @@ export default function Register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
+      const res_data = await response.json();
+      console.log("res from server",res_data);
       if (response.ok) {
         setUser({
           username: "",
           email: "",
           password: "",
         });
+        toast.success("User Registered Successfully");
         navigate("/login");
+      }else{
+        toast.error(res_data.extraDetails?res_data.extraDetails:res_data.message);
       }
-
-      console.log(response);
     } catch (error) {
       console.log("register:", error);
     }

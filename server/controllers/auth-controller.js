@@ -7,7 +7,7 @@ const home = async (req, res) => {
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      return res.status(400).json({ msg: "email already exists" });
+      return res.status(400).json({ message: "email already exists" });
     }
     const newUser = await User.create({ username, email, password });
 
@@ -27,7 +27,7 @@ const login = async (req, res) => {
     const userExist = await User.findOne({ email });
 
     if (!userExist) {
-      return res.status(400).json({ msg: "Invalid Credentials" });
+      return res.status(400).json({ message: "Invalid Credentials" });
     }
     const user =await userExist.comparePassword(password);
     if (user) {
@@ -37,7 +37,7 @@ const login = async (req, res) => {
         userId: userExist._id.toString(),
       });
     } else {
-      res.status(401).json({ msg: "Invalid Email or Password" });
+      res.status(401).json({ message: "Invalid Email or Password" });
     }
   } catch (error) {
     res.status(400).send("error");
