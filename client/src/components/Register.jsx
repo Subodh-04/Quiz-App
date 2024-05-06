@@ -27,7 +27,7 @@ export default function Register() {
     console.log(user);
 
     try {
-      const response = await fetch(`https://quizkaroo.onrender.com/api/auth/`, {
+      const response = await fetch(`https://quizkaroo-server.onrender.com/api/auth/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

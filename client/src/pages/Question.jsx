@@ -32,7 +32,7 @@ const Question = () => {
   const fetchQuestions = async (category) => {
     try {
       const response = await fetch(
-        `https://quizkaroo.onrender.com/api/auth/questions/${category}`
+        `https://quizkaroo-server.onrender.com/api/auth/questions/${category}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -82,7 +82,7 @@ const Question = () => {
   const fetchUsername = async (userId) => {
     try {
       const response = await fetch(
-        `https://quizkaroo.onrender.com/api/auth/user/${userId}`
+        `https://quizkaroo-server.onrender.com/api/auth/user/${userId}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -112,7 +112,7 @@ const Question = () => {
       };
 
       const response = await fetch(
-        "https://quizkaroo.onrender.com/api/auth/storeresult",
+        "https://quizkaroo-server.onrender.com/api/auth/storeresult",
         {
           method: "POST",
           headers: {
