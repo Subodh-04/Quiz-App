@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const Result = () => {
   let { points } = useParams();
+  const { category } = useParams();
   const [scorePercentage, setScorePercentage] = useState(0);
   const [grade, setGrade] = useState("");
   const [gradeColor, setGradeColor] = useState("");
@@ -63,7 +64,7 @@ const Result = () => {
               </div>
               <div className="form-group col-sm-4 col-xl-4">
                 <p className="text-center fs-5">
-                  Topic: <code>Linux</code>
+                  Topic: <code>{category}</code>
                   <br />
                   Grade: <span className={`${gradeColor} fs-5`}>{grade}</span>
                   <br />
