@@ -126,7 +126,7 @@ const Question = () => {
         console.log("Result stored successfully");
         console.log(resultData);
         localStorage.removeItem("questions");
-        navigate(`/result/${totalPoints}`);
+        navigate(`/result/${category}/${totalPoints}`);
       } else {
         throw new Error("Error storing result");
       }

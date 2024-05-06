@@ -2,8 +2,7 @@ import { useParams,NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Result = () => {
-  let { points } = useParams();
-  const { category } = useParams();
+  let { category,points } = useParams();
   const [scorePercentage, setScorePercentage] = useState(0);
   const [grade, setGrade] = useState("");
   const [gradeColor, setGradeColor] = useState("");
