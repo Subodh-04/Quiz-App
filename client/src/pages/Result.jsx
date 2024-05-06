@@ -1,8 +1,9 @@
-import { useParams,NavLink } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Result = () => {
-  let { category,points } = useParams();
+  let { points } = useParams();
+  let {category} =useParams();
   const [scorePercentage, setScorePercentage] = useState(0);
   const [grade, setGrade] = useState("");
   const [gradeColor, setGradeColor] = useState("");
@@ -47,14 +48,18 @@ const Result = () => {
             <div className="col-md-8 mx-auto text-center">
               <h4 className="divider">Quiz Information</h4>
             </div>
-            <h2 className={`text-uppercase text-center fw-bold my-4 ${gradeColor}`}>
+            <h2
+              className={`text-uppercase text-center fw-bold my-4 ${gradeColor}`}
+            >
               Your Result
             </h2>
             <div className="row input-border input-round justify-content-center align-items-center">
               <div className="form-group col-sm-4 col-xl-4">
                 <p className="text-center fs-5">
                   Score:{" "}
-                  <span className={`${gradeColor} fs-5`}>{scorePercentage}%</span>
+                  <span className={`${gradeColor} fs-5`}>
+                    {scorePercentage}%
+                  </span>
                   <br />
                   Total Questions: 10
                   <br />
@@ -74,7 +79,12 @@ const Result = () => {
                 </p>
               </div>
             </div>
-            <NavLink className="d-flex justify-content-center pt-3 text-decoration-none" to={"/topic"}>Back To Topic Page</NavLink>
+            <NavLink
+              className="d-flex justify-content-center pt-3 text-decoration-none"
+              to={"/topic"}
+            >
+              Back To Topic Page
+            </NavLink>
           </div>
         </div>
       </div>
