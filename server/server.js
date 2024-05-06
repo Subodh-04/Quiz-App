@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://quizkaroo.onrender.com",
+    origin: "https://quizkarooo.onrender.com",
     methods: "GET,POST,PUT,DELETE,PATCH,HEAD",
     credentials: "true",
   })
