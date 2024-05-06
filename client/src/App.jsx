@@ -14,7 +14,7 @@ function App() {
           <Route path="/login" element={<Home showLogin />} />
           <Route path="/topic" element={<Topic />} />
           <Route path="/questions/:category" element={<Question />} />
-          <Route path="/result/:points" element={<Result />} />
+          <Route path="/result/:category/:points" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </>
