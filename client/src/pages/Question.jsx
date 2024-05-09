@@ -24,7 +24,6 @@ const Question = () => {
       navigate("/login");
     } else {
       const user = JSON.parse(loggedInUser);
-      setUsername("");
       fetchUsername(user.userId);
     }
   }, [navigate]);
@@ -74,9 +73,10 @@ const Question = () => {
   };
 
   const handleEndQuiz = () => {
-    window.alert("Are you sure you want to end the quiz?");
-    localStorage.removeItem("questions");
-    navigate(`/topic`);
+    if (window.confirm("Are you sure you want to end the quiz?")) {
+      localStorage.removeItem("questions");
+      navigate(`/topic`);
+    }
   };
 
   const fetchUsername = async (userId) => {
@@ -123,8 +123,6 @@ const Question = () => {
       );
 
       if (response.ok) {
-        console.log("Result stored successfully");
-        console.log(resultData);
         localStorage.removeItem("questions");
         navigate(`/result/${category}/${totalPoints}`);
       } else {
