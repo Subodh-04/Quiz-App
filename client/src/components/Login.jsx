@@ -11,18 +11,16 @@ export default function Login() {
   });
 
   const handleInput = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
+    const { name, value } = e.target;
 
-    setUser({
-      ...user,
+    setUser((prevUser) => ({
+      ...prevUser,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
 
     try {
       const response = await fetch(`https://quiz-server-z3xp.onrender.com/api/auth/login`, {
@@ -30,19 +28,21 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       });
-      console.log(response)
+
       const res_data = await response.json();
       console.log("res from server:", res_data);
+
       if (response.ok) {
-        toast.success("login successfull");
+        toast.success("Login successful");
         setUser({ email: "", password: "" });
         localStorage.setItem("user", JSON.stringify(res_data));
         navigate("/topic");
       } else {
-        toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+        toast.error(res_data.extraDetails || res_data.message || "Login failed. Please try again.");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Login Error:", error);
+      toast.error("Login failed. Please try again.");
     }
   };
 
@@ -53,7 +53,7 @@ export default function Login() {
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
-              email
+              Email
             </label>
             <input
               type="email"
@@ -78,7 +78,7 @@ export default function Login() {
               className="form-control"
               placeholder="Enter your password"
               id="password"
-              value={user.pasword}
+              value={user.password}
               onChange={handleInput}
               required
               autoComplete="off"

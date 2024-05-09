@@ -1,69 +1,71 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
-
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
   });
-  const handleInput = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
 
-    setUser({
-      ...user,
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUser((prevUser) => ({
+      ...prevUser,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-
     try {
-      const response = await fetch(`https://quiz-server-z3xp.onrender.com/api/auth/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      });
-      const res_data = await response.json();
-      console.log("res from server",res_data);
-      if (response.ok) {
-        setUser({
-          username: "",
-          email: "",
-          password: "",
-        });
-        toast.success("User Registered Successfully");
-        navigate("/login");
-      }else{
-        toast.error(res_data.extraDetails?res_data.extraDetails:res_data.message);
+      const response = await fetch(
+        `https://quiz-server-z3xp.onrender.com/api/auth/`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData.extraDetails || errorData.message || "Registration failed."
+        );
       }
+
+      setUser({
+        username: "",
+        email: "",
+        password: "",
+      });
+      toast.success("User Registered Successfully");
+      navigate("/login");
     } catch (error) {
-      console.log("register:", error);
+      console.error("Registration Error:", error);
+      toast.error(error.message);
     }
   };
 
   return (
     <div className="card border-0">
       <div className="card-body">
-        <h5 className="card-title">Sign In</h5>
+        <h5 className="card-title">Register</h5>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
-              username
+              Username
             </label>
             <input
               type="text"
               name="username"
               className="form-control"
-              placeholder="username"
+              placeholder="Enter username"
               id="username"
               value={user.username}
               onChange={handleInput}
@@ -73,13 +75,13 @@ export default function Register() {
           </div>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
-              email
+              Email
             </label>
             <input
               type="email"
               name="email"
               className="form-control"
-              placeholder="Enter your email"
+              placeholder="Enter email"
               id="email"
               value={user.email}
               onChange={handleInput}
@@ -87,7 +89,6 @@ export default function Register() {
               autoComplete="off"
             />
           </div>
-
           <div className="mb-3">
             <label htmlFor="password" className="form-label">
               Password
@@ -96,7 +97,7 @@ export default function Register() {
               type="password"
               name="password"
               className="form-control"
-              placeholder="Enter your password"
+              placeholder="Enter password"
               id="password"
               value={user.password}
               onChange={handleInput}
@@ -104,7 +105,6 @@ export default function Register() {
               autoComplete="off"
             />
           </div>
-          <br />
           <button type="submit" className="btn btn-primary">
             Register
           </button>
