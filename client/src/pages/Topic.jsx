@@ -11,26 +11,9 @@ const Topic = () => {
       navigate("/login");
     } else {
       const user = JSON.parse(loggedInUser);
-      setUsername("");
-      fetchUsername(user.userId);
+      setUsername(user.username);
     }
   }, [navigate]);
-
-  const fetchUsername = async (userId) => {
-    try {
-      const response = await fetch(
-        `https://quiz-server-z3xp.onrender.com/api/auth/user/${userId}`
-      );
-      if (response.ok) {
-        const userData = await response.json();
-        setUsername(userData.username);
-      } else {
-        console.error("Error fetching username:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error fetching username:", error);
-    }
-  };
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -52,16 +35,54 @@ const Topic = () => {
 
   return (
     <>
-      <div className="nav navbar container">
-        <h1 className="navbar-brand fs-3">QuizKaroo</h1>
-        <p className="fs-4 fw-semi-bold fst-normal m-0">Welcome, {username}</p>
-        <button
-          className="text-decoration-none border text text-dark fw-bold ps-3 pe-3 pt-2 pb-2 rounded me-3"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <h1 className="navbar-brand fs-3">QuizKaroo</h1>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item dropdown d-lg-none">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {username}
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <button className="dropdown-item" onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p className="fs-4 fw-semi-bold fst-normal m-0 d-none d-lg-block">
+              Welcome, {username}
+            </p>
+            <button
+              className="btn btn-outline-dark d-none d-lg-block"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </nav>
 
       <div className="container mt-4">
         <h2 className="mb-4">Choose a Category:</h2>
