@@ -12,6 +12,7 @@ const Topic = () => {
       navigate("/login");
     } else {
       const user = JSON.parse(loggedInUser);
+      console.log("username:", user.username);
       setUsername(user.username);
     }
   }, [navigate]);
@@ -31,7 +32,6 @@ const Topic = () => {
 
   const handleCategoryClick = (categoryName) => {
     navigate(`/questions/${categoryName}`);
-    console.log(categoryName);
   };
 
   return (
@@ -61,7 +61,7 @@ const Topic = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {username}
+                  {username} {/* Check if username is printed here */}
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
