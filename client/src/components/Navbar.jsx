@@ -7,8 +7,8 @@ export const Navbar = ({ handleLoginClick }) => {
   return (
     <>
       <div className="nav navbar container">
-        <p className="navbar-brand fs-5">QuizKaroo</p>
-        <div className="btn justify-content-end">
+        <p className="navbar-brand fs-5 fw-semibold m-2">QuizKaroo</p>
+        <div className="btn justify-content-end border-0">
           <NavLink
             className="text-decoration-none border text text-dark ps-3 pe-3 pt-2 pb-2 rounded me-3"
             to="/login"

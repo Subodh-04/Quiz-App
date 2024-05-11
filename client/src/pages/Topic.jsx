@@ -61,7 +61,7 @@ const Topic = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {username} {/* Check if username is printed here */}
+                  {username}
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
