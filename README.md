@@ -40,9 +40,9 @@ To run this project locally, follow these steps:
 Install dependencies for both frontend and backend:
 
 # For backend
-```bash
-cd backend
-npm install
+ ```bash
+ cd backend
+ npm install
 
 # For Frontend
 ```bash
