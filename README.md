@@ -69,12 +69,12 @@ Create a .env file in the backend directory and add the following variables:
 5. **Access the application:**
    Open your browser and navigate to http://localhost:3000 for the frontend and http://localhost:5000 for the backend API.
 
-# Usage
+## Usage
 Register as a new user.
 Login with your credentials.
 Take a quiz and see your score in real-time.
 
-# Contributing
+## Contributing
 If you want to contribute to this project, please follow these steps:
 
 Fork the repository
@@ -83,7 +83,7 @@ Commit your changes (git commit -m 'Add some feature')
 Push to the branch (git push origin feature/YourFeature)
 Open a Pull Request
 
-# Acknowledgements
+## Acknowledgements
 MongoDB
 Express.js
 React.js
