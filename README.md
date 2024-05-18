@@ -1,4 +1,4 @@
-# Quiz Website
+# Quiz Website-(QuizKarooo)
 
 This is a dynamic quiz website built using the MERN stack (MongoDB, Express.js, React.js, Node.js), Bootstrap for styling, and Vite for the frontend development. The project is hosted on the OnRender platform.
 
