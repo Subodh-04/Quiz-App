@@ -39,32 +39,37 @@ To run this project locally, follow these steps:
    cd Quiz-App
 Install dependencies for both frontend and backend:
 
-bash
-Copy code
 # For backend
+```bash
 cd backend
 npm install
 
-# For frontend
+# For Frontend
+```bash
 cd ../frontend
 npm install
+
 Set up environment variables:
 
 Create a .env file in the backend directory and add the following variables:
 
-env
-Copy code
+```bash
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+
 Run the development servers:
 
 bash
 Copy code
+
 # In the backend directory
+```bash
 npm start
 
 # In the frontend directory
+```bash
 npm run dev
+
 Access the application:
 
 Open your browser and navigate to http://localhost:3000 for the frontend and http://localhost:5000 for the backend API.
@@ -81,6 +86,7 @@ Create a new branch (git checkout -b feature/YourFeature)
 Commit your changes (git commit -m 'Add some feature')
 Push to the branch (git push origin feature/YourFeature)
 Open a Pull Request
+
 Acknowledgements
 MongoDB
 Express.js
@@ -89,6 +95,7 @@ Node.js
 Bootstrap
 Vite
 OnRender
+
 Contact
 For any inquiries or questions, please contact [subodhsurwade04@gmail.com].
 
