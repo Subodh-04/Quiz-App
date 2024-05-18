@@ -33,42 +33,42 @@ You can view a live demo of the website [here](https://quizkarooo.onrender.com/)
 To run this project locally, follow these steps:
 
 1. **Clone the repository:**
-
+   
    ```bash
    git clone https://github.com/Subodh-04/Quiz-App.git
    cd Quiz-App
 Install dependencies for both frontend and backend:
 
 # For backend
- ```bash
- cd backend
- npm install
+  
+    ```bash
+    cd backend
+    npm install
 
 # For Frontend
-```bash
-cd ../frontend
-npm install
+
+   ```bash
+   cd ../frontend
+   npm install
 
 Set up environment variables:
-
 Create a .env file in the backend directory and add the following variables:
 
-```bash
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+   ```bash
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
 
 Run the development servers:
 
-bash
-Copy code
+
 
 # In the backend directory
-```bash
-npm start
+     ```bash
+     npm start
 
 # In the frontend directory
-```bash
-npm run dev
+   ```bash
+   npm run dev
 
 Access the application:
 
